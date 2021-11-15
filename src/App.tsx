@@ -110,14 +110,16 @@ function App() {
 
     return (
         <Box>
-            <GitHubBadgeBox>
-                <a href="https://github.com/jannst/alpha-tab-converter">
-                    <img loading="lazy" width="149" height="149"
-                         src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149"
-                         className="attachment-full size-full" alt="Fork me on GitHub"
-                         data-recalc-dims="1"/>
-                </a>
-            </GitHubBadgeBox>
+            <NoPrintBox>
+                <GitHubBadgeBox>
+                    <a href="https://github.com/jannst/alpha-tab-converter">
+                        <img loading="lazy" width="149" height="149"
+                             src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149"
+                             className="attachment-full size-full" alt="Fork me on GitHub"
+                             data-recalc-dims="1"/>
+                    </a>
+                </GitHubBadgeBox>
+            </NoPrintBox>
             <Background>
                 <h4 style={{marginBottom: "0px"}}>Alpha Tab Converter</h4>
                 <Box fontSize={10} p={0} m={0}>
