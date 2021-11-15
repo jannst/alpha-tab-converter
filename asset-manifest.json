@@ -1,0 +1,20 @@
+{
+  "files": {
+    "main.css": "/alpha-tab-converter/static/css/main.6dea0f05.chunk.css",
+    "main.js": "/alpha-tab-converter/static/js/main.2c930b43.chunk.js",
+    "main.js.map": "/alpha-tab-converter/static/js/main.2c930b43.chunk.js.map",
+    "runtime-main.js": "/alpha-tab-converter/static/js/runtime-main.5a7b11f9.js",
+    "runtime-main.js.map": "/alpha-tab-converter/static/js/runtime-main.5a7b11f9.js.map",
+    "static/js/2.d3ab293a.chunk.js": "/alpha-tab-converter/static/js/2.d3ab293a.chunk.js",
+    "static/js/2.d3ab293a.chunk.js.map": "/alpha-tab-converter/static/js/2.d3ab293a.chunk.js.map",
+    "index.html": "/alpha-tab-converter/index.html",
+    "static/css/main.6dea0f05.chunk.css.map": "/alpha-tab-converter/static/css/main.6dea0f05.chunk.css.map",
+    "static/js/2.d3ab293a.chunk.js.LICENSE.txt": "/alpha-tab-converter/static/js/2.d3ab293a.chunk.js.LICENSE.txt"
+  },
+  "entrypoints": [
+    "static/js/runtime-main.5a7b11f9.js",
+    "static/js/2.d3ab293a.chunk.js",
+    "static/css/main.6dea0f05.chunk.css",
+    "static/js/main.2c930b43.chunk.js"
+  ]
+}
