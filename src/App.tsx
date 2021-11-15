@@ -4,6 +4,13 @@ import {Box, Flex} from "./Layout";
 import {convertToAlphaTab} from "./Parser";
 import {chromaticScaleFlats, chromaticScaleSharps} from "./Scales";
 
+const GitHubBadgeBox = styled(Box)`
+  position: absolute;
+  right: 0;
+  top: 0;
+  z-index: 10;
+`;
+
 const Background = styled(Box)`
   background-color: #282c34;
   min-height: 100vh;
@@ -42,7 +49,7 @@ const OutputTextBox = styled(Box)`
   @media print {
     div {
       break-inside: avoid;
-      page-break-inside:avoid;
+      page-break-inside: avoid;
     }
   }
 `;
@@ -102,45 +109,58 @@ function App() {
     }, [inputText, signature])
 
     return (
-        <Background>
-            <h4>Alpha Tab Converter</h4>
-            <Box width="80%">
-                <NoPrintBox>
-                    <p>Input</p>
-                    <InputTextArea
-                        onInput={e => setInputText((e.target as HTMLTextAreaElement).value || "")}
-                        value={inputText}
-                    />
-                </NoPrintBox>
-                <Box>
-                    <NoPrintBox>
-                        <Flex alignItems="center">
-                            <p>Output</p>
-                            <Flex flexDirection="column" fontSize={20} ml="30px">
-                                <span>Key Signature Sign</span>
-                                <select value={signature} onChange={e => setSignature(e.target.value)}>
-                                    <option value="flats">Flats (b)</option>
-                                    <option value="sharps">Sharps (#)</option>
-                                </select>
-                            </Flex>
-                        </Flex>
-                    </NoPrintBox>
-                    <OutputTextBox>
-                        {outputText.map((chunk, index) => {
-                            if (Array.isArray(chunk)) {
-                                return (<Box><OutputText key={index}>
-                                    {chunk.join("\n")}
-                                </OutputText></Box>);
-                            } else {
-                                return (<React.Fragment key={index}>
-                                    {chunk}<br/>
-                                </React.Fragment>);
-                            }
-                        })}
-                    </OutputTextBox>
+        <Box>
+            <GitHubBadgeBox>
+                <a href="https://github.com/jannst/alpha-tab-converter">
+                    <img loading="lazy" width="149" height="149"
+                         src="https://github.blog/wp-content/uploads/2008/12/forkme_right_green_007200.png?resize=149%2C149"
+                         className="attachment-full size-full" alt="Fork me on GitHub"
+                         data-recalc-dims="1"/>
+                </a>
+            </GitHubBadgeBox>
+            <Background>
+                <h4 style={{marginBottom: "0px"}}>Alpha Tab Converter</h4>
+                <Box fontSize={10} p={0} m={0}>
+                    Made By Jannik Sturhann
                 </Box>
-            </Box>
-        </Background>
+                <Box width="80%">
+                    <NoPrintBox>
+                        <p>Input</p>
+                        <InputTextArea
+                            onInput={e => setInputText((e.target as HTMLTextAreaElement).value || "")}
+                            value={inputText}
+                        />
+                    </NoPrintBox>
+                    <Box>
+                        <NoPrintBox>
+                            <Flex alignItems="center">
+                                <p>Output</p>
+                                <Flex flexDirection="column" fontSize={20} ml="30px">
+                                    <span>Key Signature Sign</span>
+                                    <select value={signature} onChange={e => setSignature(e.target.value)}>
+                                        <option value="flats">Flats (b)</option>
+                                        <option value="sharps">Sharps (#)</option>
+                                    </select>
+                                </Flex>
+                            </Flex>
+                        </NoPrintBox>
+                        <OutputTextBox>
+                            {outputText.map((chunk, index) => {
+                                if (Array.isArray(chunk)) {
+                                    return (<Box><OutputText key={index}>
+                                        {chunk.join("\n")}
+                                    </OutputText></Box>);
+                                } else {
+                                    return (<React.Fragment key={index}>
+                                        {chunk}<br/>
+                                    </React.Fragment>);
+                                }
+                            })}
+                        </OutputTextBox>
+                    </Box>
+                </Box>
+            </Background>
+        </Box>
     );
 }
 
