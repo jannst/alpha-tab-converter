@@ -27,6 +27,16 @@ const NoPrintBox = styled(Box)`
   }
 `;
 
+const PrintHeader = styled(Box)`
+  font-size: 10px;
+  color: black;
+  display: none;
+  align-self: start;
+  @media print {
+    display: block !important;
+  }
+`;
+
 const InputTextArea = styled.textarea`
   width: 100%;
   height: 30vh;
@@ -121,10 +131,12 @@ function App() {
                 </GitHubBadgeBox>
             </NoPrintBox>
             <Background>
-                <h4 style={{marginBottom: "0px"}}>Alpha Tab Converter</h4>
-                <Box fontSize={10} p={0} m={0}>
-                    Made By Jannik Sturhann
-                </Box>
+                <NoPrintBox>
+                    <h4 style={{marginBottom: "0px"}}>Alpha Tab Converter</h4>
+                    <Box fontSize={10} p={0} m={0}>
+                        Made By Jannik Sturhann (2021)
+                    </Box>
+                </NoPrintBox>
                 <Box width="80%">
                     <NoPrintBox>
                         <p>Input</p>
@@ -149,7 +161,7 @@ function App() {
                         <OutputTextBox>
                             {outputText.map((chunk, index) => {
                                 if (Array.isArray(chunk)) {
-                                    return (<Box><OutputText key={index}>
+                                    return (<Box key={index}><OutputText>
                                         {chunk.join("\n")}
                                     </OutputText></Box>);
                                 } else {
@@ -159,6 +171,10 @@ function App() {
                                 }
                             })}
                         </OutputTextBox>
+                        <PrintHeader>
+                            <span>This Tab was created using Alpha Tab Converter (https://jannst.github.io/alpha-tab-converter/)</span><br/>
+                            <span>Made By Jannik Sturhann (2021)</span>
+                        </PrintHeader>
                     </Box>
                 </Box>
             </Background>

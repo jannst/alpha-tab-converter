@@ -26,9 +26,9 @@ export function processTabBlock(inputLines: string[], blockLength: number, chrom
     let prevRead: (string | null)[] | null = null;
     for (let i = 0; i < blockLength; i++) {
         let latestRead: (string | null)[] | null = [];
-        for (let index = 0; index < inputLines.length; index++) {
-            const line = inputLines[index];
-            if (prevRead && prevRead[index] && prevRead[index]!.length > 1) {
+        for (let j = 0; j < inputLines.length; j++) {
+            const line = inputLines[j];
+            if (prevRead && prevRead[j] && prevRead[j]!.length > 1) {
                 //the last time we read from this line there was a two digit number
                 //ignore this line for this iteration
                 latestRead.push(null);
@@ -36,7 +36,9 @@ export function processTabBlock(inputLines: string[], blockLength: number, chrom
             }
             const match = line.slice(i).match(/^\d+/);
             if (match) {
-                latestRead.push(parseFretNumberString(match[0]));
+                //if there was a number read directly before the current character
+                //treat it like single numbers
+                latestRead.push(parseFretNumberString(match[0], !!prevRead && !!prevRead[j]));
             } else {
                 latestRead.push(null);
             }
@@ -82,8 +84,8 @@ export function processTabBlock(inputLines: string[], blockLength: number, chrom
     return output
 }
 
-function parseFretNumberString(fretNumberString: string) {
-    if (fretNumberString.length > 2 || parseInt(fretNumberString) > 24) {
+function parseFretNumberString(fretNumberString: string, lastReadNumber: boolean = false) {
+    if (fretNumberString.length > 2 || parseInt(fretNumberString) > 24 || lastReadNumber) {
         //in this case we have multiple numbers right behind each other without separator
         //most guitars no not have more than 24 frets
         //only process first number
